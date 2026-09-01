@@ -1,3 +1,5 @@
+import random
+
 def interface():
     print("   A   B   C")
     print("0 [{}] [{}] [{}]".format(board[0][0], board[0][1], board[0][2]))
@@ -27,13 +29,14 @@ def ValidarVitoria():
 board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
 parar = False
-rodada = "X"
+alternativas = ["X", "O"]
+rodada = random.choice(alternativas)
 jogadas = 0
 
 while parar == False:
     interface()
 
-    
+    print(f"Rodada do jogador '{rodada}'")
     try:
         linha = int(input("Selecione a linha(0, 1, 2): "))
         if linha < 0 or linha > 2:
@@ -82,3 +85,16 @@ while parar == False:
         interface()
         parar = True
         print("Empate!")
+        retorno = input("Deseja jogar novamente? (S/N): ").upper()
+        try:
+            if retorno == "S":
+                board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+                parar = False
+                jogadas = 0
+                rodada = random.choice(alternativas)
+            elif retorno == "N":
+                print("Obrigado por jogar!")
+                break
+        except:
+            print("Entrada inválida! Por favor, insira 'S' ou 'N'.")
+            continue
