@@ -67,6 +67,23 @@ while parar == False:
             print("Posição já ocupada!")
             continue
         board[linha][coluna] = "X"
+        if ValidarVitoria():
+                interface()
+                parar = True
+                print("Vitória do jogador {}!".format(rodada))
+                retorno = input("Deseja jogar novamente? (S/N): ").upper()
+                try:
+                    if retorno == "S":
+                        board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+                        parar = False
+                        jogadas = 0
+                        rodada = random.choice(alternativas)
+                    elif retorno == "N":
+                        print("Obrigado por jogar!")
+                        break
+                except:
+                    print("Entrada inválida! Por favor, insira 'S' ou 'N'.")
+                    continue
         jogadas += 1
         rodada = "O"
     elif rodada == "O":
@@ -74,13 +91,25 @@ while parar == False:
             print("Posição já ocupada!")
             continue
         board[linha][coluna] = "O"
+        if ValidarVitoria():
+                interface()
+                parar = True
+                print("Vitória do jogador {}!".format(rodada))
+                retorno = input("Deseja jogar novamente? (S/N): ").upper()
+                try:
+                    if retorno == "S":
+                        board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+                        parar = False
+                        jogadas = 0
+                        rodada = random.choice(alternativas)
+                    elif retorno == "N":
+                        print("Obrigado por jogar!")
+                        break
+                except:
+                    print("Entrada inválida! Por favor, insira 'S' ou 'N'.")
+                    continue
         jogadas += 1
         rodada = "X"
-
-    if ValidarVitoria():
-        interface()
-        parar = True
-        print("Vitória do jogador {}!".format(rodada))
     elif jogadas == 9:
         interface()
         parar = True
