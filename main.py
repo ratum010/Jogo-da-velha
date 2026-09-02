@@ -67,6 +67,7 @@ while parar == False:
             print("Posição já ocupada!")
             continue
         board[linha][coluna] = "X"
+        jogadas += 1
         if ValidarVitoria():
                 interface()
                 parar = True
@@ -84,13 +85,13 @@ while parar == False:
                 except:
                     print("Entrada inválida! Por favor, insira 'S' ou 'N'.")
                     continue
-        jogadas += 1
         rodada = "O"
     elif rodada == "O":
         if board[linha][coluna] != " ":
             print("Posição já ocupada!")
             continue
         board[linha][coluna] = "O"
+        jogadas += 1
         if ValidarVitoria():
                 interface()
                 parar = True
@@ -107,10 +108,10 @@ while parar == False:
                         break
                 except:
                     print("Entrada inválida! Por favor, insira 'S' ou 'N'.")
-                    continue
-        jogadas += 1
+                    continue    
         rodada = "X"
-    elif jogadas == 9:
+
+    if jogadas == 9:
         interface()
         parar = True
         print("Empate!")
