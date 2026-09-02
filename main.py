@@ -61,7 +61,6 @@ while parar == False:
         print("Entrada inválida! Por favor, insira uma letra válida.")
         continue
 
-
     if rodada == "X":
         if board[linha][coluna] != " ":
             print("Posição já ocupada!")
@@ -79,6 +78,7 @@ while parar == False:
                         parar = False
                         jogadas = 0
                         rodada = random.choice(alternativas)
+                        continue
                     elif retorno == "N":
                         print("Obrigado por jogar!")
                         break
@@ -103,6 +103,7 @@ while parar == False:
                         parar = False
                         jogadas = 0
                         rodada = random.choice(alternativas)
+                        continue
                     elif retorno == "N":
                         print("Obrigado por jogar!")
                         break
